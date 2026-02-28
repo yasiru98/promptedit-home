@@ -1,1 +1,62 @@
 @import "tailwindcss";
+
+@theme {
+  /* Playfair Display: loaded via Google Fonts in index.html, used for all display headlines */
+  --font-display: "Playfair Display", Georgia, serif;
+
+  /* Brand colors */
+  --color-brand: #e63946;
+  --color-surface-1: #111111;
+  --color-surface-2: #1a1a1a;
+  --color-base: #0a0a0a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Marquee: scrolls a duplicated list left continuously for seamless loop.
+   Container needs overflow-hidden, inner element needs w-max.
+   Pause on hover is handled by the component via animation-play-state. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
